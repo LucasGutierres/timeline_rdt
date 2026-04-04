@@ -11,11 +11,11 @@
 
     <style>
         html {
-            scroll-behavior: smooth; /* Native smooth scroll backup */
+            scroll-behavior: smooth;
         }
         body {
-            position: relative; /* REQUIRED for ScrollSpy */
-            height: auto;       /* MUST be auto, not 100% */
+            position: relative;
+            height: auto;
             overflow-x: hidden;
             background-color: #111111; 
         }
@@ -35,10 +35,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
         .section { background-color: #111111; }
 
@@ -49,7 +45,7 @@
             height: 100vh;
             width: 400px;
             display: flex;
-            align-items: center; /* Centers the whole list vertically */
+            align-items: center;
             z-index: 10;
             pointer-events: none;
         }
@@ -60,7 +56,7 @@
             display: flex;
             flex-direction: column;
             pointer-events: auto;
-            position: relative; /* Base for the line */
+            position: relative;
         }
 
         .nav li {
@@ -70,17 +66,32 @@
             flex-shrink: 0;
         }
 
-        /* The Vertical Line */
-
+        /* THE CONTINUOUS LINE */
         .nav li:after {
             content: '';
             display: block;
             border-left: 2px solid rgba(255,255,255,0.3);
             position: absolute;
             left: -30px;
-            top:    ;
-            bottom: -30px; /* Adjust this so it reaches the next item */
-            transition: border-color 0.4s ease;
+            /* Start from the middle of the current dot */
+            top: 15px; 
+            /* Extend down to the middle of the next dot */
+            /* This negative bottom ensures it bridges the margin-bottom gap */
+            bottom: -25px; 
+            transition: border-color 0.4s ease, bottom 0.4s ease;
+        }
+
+        /* Active Line - Highlighted white */
+        .nav li.active:after {
+            border-left: 2px solid #fff;
+            /* When active, the body text expands, so the line must grow longer 
+               to reach the next item */
+            bottom: -45px; 
+        }
+
+        /* Remove line from the very last item */
+        .nav li:last-child:after {
+            display: none;
         }
 
         .nav li a {
@@ -94,27 +105,19 @@
         .nav__title { font-size: 24px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0; }
         .nav__body { font-size: 14px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0; width: 280px; }
 
-        /* Active State Enhancements */
+        /* Active State Layout */
         .nav li.active {
-            margin-bottom: 40px; /* Space for the expanded text */
+            margin-bottom: 40px; 
         }  
-
-        .nav li.active:after {
-            border-left: 2px solid #fff;
-            bottom: -50px; /* Adjust based on your body text height */
-        }
 
         .nav li.active .nav__counter {
             color: #fff;
+            opacity: 1;
             text-shadow: 0 0 10px rgba(255,255,255,0.5);
-            font-size: 48px; /* Matches original intent */
+            font-size: 48px;
         }
 
-        .nav li.active .nav__title { height: auto; opacity: 1; margin-top: 5px; }
-        .nav li.active .nav__body { height: auto; opacity: 1; }
-        .nav li:last-child:after {
-            display: none;
-        }
+        /* Dots / Nodes */
         .nav li:before {
             content: '';
             position: absolute;
@@ -125,20 +128,23 @@
             background: rgba(255,255,255,0.3);
             border-radius: 50%;
             z-index: 2;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, top 0.3s ease;
         }
+
         .nav li.active:before {
             background: #fff;
             box-shadow: 0 0 10px rgba(255,255,255,0.8);
-            top: 15px; /* Adjusts for larger active font size */
+            /* Adjust dot position to stay centered with larger active text */
+            top: 15px; 
         }
 
+        /* Ensure text visibility on active */
         .nav li.active .nav__title, 
         .nav li.active .nav__body {
             height: auto;
             opacity: 1;
             overflow: visible;
-            transition: all 0.3s ease-out;
+            margin-top: 5px;
         }
     </style>
 </head>
