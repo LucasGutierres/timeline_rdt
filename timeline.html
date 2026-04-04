@@ -185,7 +185,13 @@
                 width: 100%;
             }
 
-            .nav li.active .nav__counter {
+            /* Remove timeline visuals for the single active item */
+            .nav li:after,
+            .nav li:before {
+                display: none;
+            }
+
+            .nav li.active .nav__title {
                 font-size: 32px; /* Make it prominent */
                 margin-bottom: 5px;
             }
