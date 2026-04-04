@@ -46,19 +46,26 @@
             left: 0;
             height: 100vh;
             width: 400px;
-            display: flex;
-            align-items: center;
+            display: block !important;
             z-index: 10;
             pointer-events: none;
+            overflow: hidden; 
         }
 
         .nav {
             margin-left: 50px;
             list-style: none;
+            pointer-events: auto;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin: 0 0 0 50px;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            pointer-events: auto;
-            position: relative;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+            transform-origin: top center;
         }
 
         .nav li {
@@ -66,6 +73,7 @@
             transition: all 0.3s ease-out;
             margin-bottom: 20px;
             flex-shrink: 0;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         /* 1. THE DOTS (Nodes) */
@@ -127,6 +135,8 @@
             color: #fff;
             font-size: 48px;
             opacity: 1;
+            width: 300px;
+            display: block;
         }
 
         .nav li.active .nav__body {
@@ -269,13 +279,6 @@
                     margin-right: auto;
                 }
 
-                .nav__wrapper.is-open .nav li.active .nav__counter,{
-                    display: block; 
-                    height: auto; 
-                    opacity: 1; */
-                    display: none; 
-                }
-
                 .nav__wrapper.is-open .nav li.active .nav__title {
                     display: none;
                 }
@@ -362,18 +365,6 @@
                         <h3 class="nav__title">1822</h3>
                     </a>
                 </li>
-                <li>
-                    <a href="#section8">
-                        <span class="nav__counter">1838: Manuel Volta</span>
-                        <h3 class="nav__title">1822</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="#section9">
-                        <span class="nav__counter">1841: Manuel Cai</span>
-                        <h3 class="nav__title">1822</h3>
-                    </a>
-                </li>
             </ul>
         </nav>
 
@@ -425,14 +416,30 @@
 
         function updateActiveNav() {
             var scrollPos = $(document).scrollTop();
+            var vh50 = $(window).height() / 2;
+            
             $('section').each(function() {
                 var sectionTop = $(this).offset().top;
-                if (sectionTop <= scrollPos + 50 && (sectionTop + $(this).outerHeight()) > scrollPos + 50) {
+                var triggerPoint = scrollPos + vh50;
+
+                if (sectionTop <= triggerPoint && (sectionTop + $(this).outerHeight()) > triggerPoint) {
                     var $navItem = $('.nav li a[href="#' + $(this).attr("id") + '"]').closest('li');
+                    
                     if (!$navItem.hasClass('active')) {
                         $('.nav li').removeClass("active");
                         $navItem.addClass("active");
-                        $navItem[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        
+                        if ($(window).width() > 768) {
+                            // Use a 10ms timeout to allow the browser to calculate the NEW height 
+                            // after the .active class is applied, but before the 0.6s transition ends.
+                            setTimeout(function() {
+                                var itemOffset = $navItem[0].offsetTop;
+                                var activeHeight = $navItem[0].offsetHeight;
+                                var midpoint = itemOffset + (activeHeight / 2);
+
+                                $('.nav').css('transform', 'translateY(-' + midpoint + 'px)');
+                            }, 10); 
+                        }
                     }
                 }
             });
