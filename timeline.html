@@ -66,32 +66,27 @@
             flex-shrink: 0;
         }
 
-        /* THE CONTINUOUS LINE */
-        .nav li:after {
+        /* 1. THE DOTS (Nodes) */
+        .nav li:before {
             content: '';
-            display: block;
-            border-left: 2px solid rgba(255,255,255,0.3);
             position: absolute;
-            left: -30px;
-            /* Start exactly from the center of the dot */
-            top: 12px; 
-            /* Extend down to the start of the next item's dot */
-            bottom: -28px; 
+            left: -34px;
+            top: 12px; /* Fixed anchor point */
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            z-index: 2;
             transition: all 0.3s ease-out;
         }
 
-        /* Active Line - Highlighted white */
-        .nav li.active:after {
-            border-left: 2px solid #fff;
-            /* The line starts at the same top but must reach further 
-               because the 'margin-bottom' of the active LI is larger */
-            top: 12px;
-            bottom: -48px; 
-        }
-
-        /* Remove line from the very last item */
-        .nav li:last-child:after {
-            display: none;
+        /* 2. THE CONTINUOUS LINE */
+        .nav li:after {
+            position: absolute;
+            left: -30px;
+            top: 12px;     /* Start exactly from the center of the dot */
+            bottom: -28px; /* Reach down to bridge the gap to the next item */
+            transition: all 0.3s ease-out;
         }
 
         .nav li a {
@@ -105,44 +100,33 @@
         .nav__title { font-size: 24px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0; }
         .nav__body { font-size: 14px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0; width: 280px; }
 
-        /* Active State Layout */
+        /* ACTIVE STATE ENHANCEMENTS */
         .nav li.active {
             margin-bottom: 40px; 
         }  
 
-        .nav li.active .nav__counter {
-            color: #fff;
-            opacity: 1;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-            font-size: 48px;
-        }
-
-        /* Dots / Nodes */
-        .nav li:before {
-            content: '';
-            position: absolute;
-            left: -34px;
-            /* Use a fixed top percentage to keep it aligned with the first line of text */
-            top: 12px; 
-            width: 10px;
-            height: 10px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            z-index: 2;
-            transition: all 0.3s ease-out;
-        }
-
+        /* Highlight the dot */
         .nav li.active:before {
             background: #fff;
             box-shadow: 0 0 10px rgba(255,255,255,0.8);
-            /* Increase size but keep the center point the same */
             width: 12px;
             height: 12px;
             left: -35px;
-            top: 12px; 
+            top: 18px; /* Shifted down slightly to stay centered with larger text */
         }
 
-        /* Ensure text visibility on active */
+        /* Highlight the line */
+        .nav li.active:after {
+            top: 18px;     /* Match the active dot's new top */
+            bottom: -48px; /* Extend further to account for the margin-bottom: 40px */
+        }
+
+        .nav li.active .nav__counter {
+            color: #fff;
+            font-size: 48px;
+            opacity: 1;
+        }
+
         .nav li.active .nav__title, 
         .nav li.active .nav__body {
             height: auto;
