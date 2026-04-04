@@ -137,45 +137,61 @@
         @media (max-width: 768px) {
             .nav__wrapper {
                 width: 100%;
-                height: 15vh; /* Fixed height for top bar */
+                height: 15vh; /* Adjust height as needed */
                 top: 0;
-                background: #111;
+                left: 0;
+                background: rgba(17, 17, 17, 0.95);
                 border-bottom: 1px solid #333;
+                display: flex;
+                justify-content: center; /* Horizontally centers the nav */
+                align-items: center;     /* Vertically centers the nav */
                 pointer-events: auto;
             }
 
             .nav {
-                flex-direction: row; /* Stack items horizontally */
-                margin-left: 20px;
-                padding: 10px 0;
-                overflow-x: auto; /* Allow swiping on small screens */
-                -webkit-overflow-scrolling: touch;
+                margin: 0;
+                padding: 0;
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
             }
 
+            /* 1. Hide all items by default on mobile */
             .nav li {
-                margin-bottom: 0;
-                margin-right: 30px; /* Horizontal spacing */
+                display: none; 
+                margin: 0;
             }
 
-            /* Hide description on mobile to save space */
-            .nav__body {
-                display: none;
+            /* 2. Only show the active item */
+            .nav li.active {
+                display: block;
+                text-align: center;
             }
 
-            /* Hide the connecting lines on mobile for a cleaner look */
-            .nav li:after {
-                display: none;
-            }
-
-            /* Adjust dots to be above the numbers */
+            /* Remove timeline visuals for the single active item */
+            .nav li:after,
             .nav li:before {
-                left: 50%;
-                top: -5px;
-                transform: translateX(-50%);
+                display: none;
+            }
+
+            .nav li.active .nav__counter {
+                font-size: 32px; /* Make it prominent */
+                margin-bottom: 5px;
+            }
+
+            .nav li.active .nav__title {
+                font-size: 18px;
+                height: auto;
+                opacity: 1;
+            }
+
+            .nav__body {
+                display: none; /* Keep description hidden to save space */
             }
 
             section {
-                font-size: 24px; /* Smaller text for mobile screens */
+                font-size: 24px;
+                padding-top: 100px; /* Prevent header from covering section text */
             }
         }
     </style>
