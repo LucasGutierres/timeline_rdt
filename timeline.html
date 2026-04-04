@@ -347,36 +347,32 @@
         // 1. THE SCROLL LISTENER (The Brain)
         // This function checks which section is currently at the top of the screen
         // and updates the navbar automatically.
-        $(window).on('scroll', function() {
-            var scrollPos = $(document).scrollTop();
-            var windowHeight = $(window).height();
-            
-            $('section').each(function() {
-                var currSection = $(this);
-                var sectionId = currSection.attr("id");
-                var sectionTop = currSection.offset().top;
-                var sectionHeight = currSection.outerHeight();
+        let isScrolling = false;
 
-                // Logic: If the top of the section has passed the middle of the screen
-                // OR if the section is currently filling the top part of the screen.
-                if (sectionTop <= scrollPos + 50 && (sectionTop + sectionHeight) > scrollPos + 50) {
-                    
-                    // Only update if it's not already active to save performance
-                    var $navItem = $('.nav li a[href="#' + sectionId + '"]').closest('li');
-                    
+        $(window).on('scroll', function() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(function() {
+                    updateActiveNav();
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+
+        function updateActiveNav() {
+            var scrollPos = $(document).scrollTop();
+            $('section').each(function() {
+                var sectionTop = $(this).offset().top;
+                if (sectionTop <= scrollPos + 50 && (sectionTop + $(this).outerHeight()) > scrollPos + 50) {
+                    var $navItem = $('.nav li a[href="#' + $(this).attr("id") + '"]').closest('li');
                     if (!$navItem.hasClass('active')) {
                         $('.nav li').removeClass("active");
                         $navItem.addClass("active");
-                        
-                        // Center the sidebar on the newly active item
-                        $navItem[0].scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' 
-                        });
+                        $navItem[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                 }
             });
-        });
+        }
 
         // 2. THE CLICK HANDLER (The Movement)
         // This only handles the "Slide" animation. 
