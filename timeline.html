@@ -73,20 +73,20 @@
             border-left: 2px solid rgba(255,255,255,0.3);
             position: absolute;
             left: -30px;
-            /* Start from the middle of the current dot */
-            top: 15px; 
-            /* Extend down to the middle of the next dot */
-            /* This negative bottom ensures it bridges the margin-bottom gap */
-            bottom: -25px; 
-            transition: border-color 0.4s ease, bottom 0.4s ease;
+            /* Start exactly from the center of the dot */
+            top: 12px; 
+            /* Extend down to the start of the next item's dot */
+            bottom: -28px; 
+            transition: all 0.3s ease-out;
         }
 
         /* Active Line - Highlighted white */
         .nav li.active:after {
             border-left: 2px solid #fff;
-            /* When active, the body text expands, so the line must grow longer 
-               to reach the next item */
-            bottom: -45px; 
+            /* The line starts at the same top but must reach further 
+               because the 'margin-bottom' of the active LI is larger */
+            top: 12px;
+            bottom: -48px; 
         }
 
         /* Remove line from the very last item */
@@ -122,20 +122,24 @@
             content: '';
             position: absolute;
             left: -34px;
-            top: 8px;
+            /* Use a fixed top percentage to keep it aligned with the first line of text */
+            top: 12px; 
             width: 10px;
             height: 10px;
             background: rgba(255,255,255,0.3);
             border-radius: 50%;
             z-index: 2;
-            transition: background 0.3s ease, top 0.3s ease;
+            transition: all 0.3s ease-out;
         }
 
         .nav li.active:before {
             background: #fff;
             box-shadow: 0 0 10px rgba(255,255,255,0.8);
-            /* Adjust dot position to stay centered with larger active text */
-            top: 15px; 
+            /* Increase size but keep the center point the same */
+            width: 12px;
+            height: 12px;
+            left: -35px;
+            top: 12px; 
         }
 
         /* Ensure text visibility on active */
