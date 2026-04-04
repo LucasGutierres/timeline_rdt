@@ -134,6 +134,28 @@
             overflow: visible;
             margin-top: 5px;
         }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            z-index: 11;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
         @media (max-width: 768px) {
             .nav__wrapper {
                 width: 100%;
@@ -194,6 +216,35 @@
                 font-size: 24px;
                 padding-top: 100px; /* Prevent header from covering section text */
             }
+            .nav-toggle {
+                    display: block; /* Show button on mobile */
+                }
+
+                /* When the menu is open, expand the wrapper */
+                .nav__wrapper.is-open {
+                    height: 100vh;
+                    background: rgba(17, 17, 17, 0.98);
+                    align-items: flex-start;
+                    padding-top: 80px;
+                    overflow-y: auto;
+                }
+
+                /* Show ALL items when is-open is active */
+                .nav__wrapper.is-open .nav {
+                    flex-direction: column;
+                }
+
+                .nav__wrapper.is-open .nav li {
+                    display: block;
+                    margin-bottom: 30px;
+                    opacity: 1;
+                }
+                
+                /* Optional: Hamburger to 'X' animation */
+                .nav__wrapper.is-open .nav-toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+                .nav__wrapper.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+                .nav__wrapper.is-open .nav-toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            }
         }
     </style>
 </head>
@@ -202,6 +253,11 @@
 
     <div class="wrapper">
         <nav class="nav__wrapper" id="navbar-example">
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav">
                 <li class="active">
                     <a href="#section1">
@@ -262,6 +318,17 @@
 
     <script>
     $(document).ready(function() {
+
+        $('#navToggle').on('click', function() {
+            $('.nav__wrapper').toggleClass('is-open');
+        });
+
+        // Close menu when a link is clicked (so user sees the section)
+        $('.nav li a').on('click', function() {
+            if ($(window).width() <= 768) {
+                $('.nav__wrapper').removeClass('is-open');
+            }
+        });
         
         // 1. THE SCROLL LISTENER (The Brain)
         // This function checks which section is currently at the top of the screen
