@@ -237,77 +237,83 @@
             }
             .nav-toggle {
                     display: block; /* Show button on mobile */
-                }
+            }
 
-                /* When the menu is open, expand the wrapper */
-                .nav__wrapper.is-open {
-                    height: 100vh;
-                    background: rgba(17, 17, 17, 0.98);
-                    display: flex;
-                    align-items: center; 
-                    justify-content: center;
-                    padding-top: 0; /* Remove top padding to allow perfect centering */
-                    overflow-y: auto;
-                }
+            /* When the menu is open, expand the wrapper */
+            .nav__wrapper.is-open {
+                height: 100vh;
+                background: rgba(17, 17, 17, 0.98);
+                display: block;
+                overflow-y: auto;
+                padding: 80px 20px;
+                align-items: center; 
+                justify-content: center;
+            }
 
-                /* Show ALL items when is-open is active */
-                .nav__wrapper.is-open .nav {
-                    flex-direction: column;
-                    align-items: center; /* This centers the items horizontally */
-                    justify-content: center;
-                    width: 100%;
-                    margin: 0;
-                }
+            /* Show ALL items when is-open is active */
+            .nav__wrapper.is-open .nav {
+                position: relative;
+                top: 0;
+                transform: none !important;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
 
-                .nav__wrapper.is-open .nav li {
-                    display: block;
-                    margin-bottom: 30px;
-                    opacity: 1;
-                    text-align: center;
-                }
+            .nav__wrapper.is-open .nav li {
+                display: block;
+                margin-bottom: 30px;
+                opacity: 1;
+                height: auto;
+                text-align: center;
+            }
 
-                .nav__wrapper.is-open .nav__title {
-                    display: block;
-                    height: auto;
-                    opacity: 0.6; /* Dim inactive titles */
-                    overflow: visible;
-                }
+            .nav__wrapper.is-open .nav__title {
+                display: block;
+                height: auto;
+                opacity: 0.6; /* Dim inactive titles */
+                overflow: visible;
+            }
 
-                .nav__wrapper.is-open .nav__body {
-                    text-align: center;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
+            .nav__wrapper.is-open .nav__body {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
 
-                .nav__wrapper.is-open .nav li.active .nav__title {
-                    display: none;
-                }
+            .nav__wrapper.is-open .nav li.active .nav__title {
+                display: none;
+            }
 
-                .nav__wrapper.is-open .nav li.active .nav__counter {
-                    display: block; 
-                    height: auto; 
-                    opacity: 1;
-                    font-size: 28px; /* Prominent size for the active selection */
-                    color: #fff;
-                    text-align: center;
-                    padding-left: 10%;
-                    padding-right: 10%;
-                }
+            .nav__wrapper.is-open .nav li.active .nav__counter {
+                display: block; 
+                height: auto; 
+                opacity: 1;
+                font-size: 28px; /* Prominent size for the active selection */
+                color: #fff;
+                text-align: center;
+                padding-left: 10%;
+                padding-right: 10%;
+            }
 
-                .nav__wrapper.is-open .nav__title {
-                    height: auto;
-                    opacity: 1;
-                    overflow: visible;
-                    display: block;
-                }
+            .nav__wrapper.is-open .nav__title {
+                height: auto;
+                opacity: 1;
+                overflow: visible;
+                display: block;
+            }
 
-                .nav__counter { font-size: 20px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0;  }
-                .nav__title { font-size: 24px; opacity: 0.6; transition: all 0.3s; }
-                
-                /* Optional: Hamburger to 'X' animation */
-                .nav__wrapper.is-open .nav-toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-                .nav__wrapper.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
-                .nav__wrapper.is-open .nav-toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            .nav__counter { font-size: 20px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0;  }
+            .nav__title { font-size: 24px; opacity: 0.6; transition: all 0.3s; }
+            
+            /* Optional: Hamburger to 'X' animation */
+            .nav__wrapper.is-open .nav-toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .nav__wrapper.is-open .nav-toggle span:nth-child(2) { opacity: 0; }
+            .nav__wrapper.is-open .nav-toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
             }
         }
     </style>
@@ -415,6 +421,9 @@
         });
 
         function updateActiveNav() {
+            if ($(window).width() <= 768 && $('.nav__wrapper').hasClass('is-open')) {
+                return; 
+            }
             var scrollPos = $(document).scrollTop();
             var vh50 = $(window).height() / 2;
             
@@ -430,8 +439,6 @@
                         $navItem.addClass("active");
                         
                         if ($(window).width() > 768) {
-                            // Use a 10ms timeout to allow the browser to calculate the NEW height 
-                            // after the .active class is applied, but before the 0.6s transition ends.
                             setTimeout(function() {
                                 var itemOffset = $navItem[0].offsetTop;
                                 var activeHeight = $navItem[0].offsetHeight;
@@ -439,6 +446,8 @@
 
                                 $('.nav').css('transform', 'translateY(-' + midpoint + 'px)');
                             }, 10); 
+                        } else {
+                            $('.nav').css('transform', 'none')
                         }
                     }
                 }
