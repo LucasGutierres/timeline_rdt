@@ -141,7 +141,7 @@
             border: none;
             cursor: pointer;
             padding: 10px;
-            position: absolute;
+            position: fixed;
             right: 20px;
             top: 20px;
             z-index: 11;
@@ -169,8 +169,6 @@
                 align-items: center;     /* Vertically centers the nav */
                 pointer-events: auto;
                 padding-top: 5vh;
-                padding-left: 15vh;
-                padding-right: 15vh;
             }
 
             .nav {
@@ -226,20 +224,34 @@
                 .nav__wrapper.is-open {
                     height: 100vh;
                     background: rgba(17, 17, 17, 0.98);
-                    align-items: flex-start;
-                    padding-top: 80px;
+                    display: flex;
+                    align-items: center; 
+                    justify-content: center;
+                    padding-top: 0; /* Remove top padding to allow perfect centering */
                     overflow-y: auto;
                 }
 
                 /* Show ALL items when is-open is active */
                 .nav__wrapper.is-open .nav {
                     flex-direction: column;
+                    align-items: center; /* This centers the items horizontally */
+                    justify-content: center;
+                    width: 100%;
+                    margin: 0;
                 }
 
                 .nav__wrapper.is-open .nav li {
                     display: block;
                     margin-bottom: 30px;
                     opacity: 1;
+                    text-align: center;
+                }
+
+                .nav__wrapper.is-open .nav__title,
+                .nav__wrapper.is-open .nav__body {
+                    text-align: center;
+                    margin-left: auto;
+                    margin-right: auto;
                 }
                 
                 /* Optional: Hamburger to 'X' animation */
