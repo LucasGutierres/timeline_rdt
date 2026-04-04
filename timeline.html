@@ -136,16 +136,12 @@
         }
         @media (max-width: 768px) {
             .nav__wrapper {
-                position: fixed;
+                width: 100%;
+                height: 80px; /* Fixed height for top bar */
                 top: 0;
-                left: 0;
-                height: 20vh;
-                width: 400px; /* Or 100% if you are moving to mobile */
-                display: flex;
-                align-items: center;    /* Vertical centering */
-                justify-content: center; /* Horizontal centering */
-                z-index: 10;
-                pointer-events: none;
+                background: #111;
+                border-bottom: 1px solid #333;
+                pointer-events: auto;
             }
 
             .nav {
@@ -156,35 +152,9 @@
                 -webkit-overflow-scrolling: touch;
             }
 
-             .nav li {
-                position: relative;
-                transition: all 0.4s ease-in-out;
+            .nav li {
                 margin-bottom: 0;
-                height: 0;         /* Collapse inactive items */
-                opacity: 0;        /* Hide inactive items */
-                overflow: hidden;
-                pointer-events: none;
-            }
-
-            .nav li.active {
-                height: auto;      /* Expand to fit content */
-                opacity: 1;        /* Make visible */
-                margin-bottom: 0;  /* Reset margins for clean centering */
-                pointer-events: auto;
-            }
-
-            .nav li.active:before {
-                left: -20px; /* Position it relative to the centered text */
-                top: 50%;
-                transform: translateY(-50%);
-            }
-
-            .nav li.active a {
-                transform: scale(1.1);
-                display: flex;
-                flex-direction: column;
-                align-items: center; /* Keeps text block centered */
-                text-align: center;
+                margin-right: 30px; /* Horizontal spacing */
             }
 
             /* Hide description on mobile to save space */
