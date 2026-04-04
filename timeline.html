@@ -203,9 +203,18 @@
                 display: none;
             }
 
+            .nav li.active .nav__counter {
+                display: none;
+            }
+
             .nav li.active .nav__title {
-                font-size: 32px; /* Make it prominent */
-                margin-bottom: 5px;
+                display: block;
+                height: auto;
+                opacity: 1;
+                font-size: 24px; /* Adjust size as needed */
+                color: #fff;
+                margin: 0;
+                overflow: visible;
             }
 
             .nav__body {
@@ -252,6 +261,20 @@
                     text-align: center;
                     margin-left: auto;
                     margin-right: auto;
+                }
+
+                .nav__wrapper.is-open .nav li.active .nav__counter,{
+                    display: block; 
+                    height: auto; 
+                    opacity: 1; */
+                    display: none; 
+                }
+
+                .nav__wrapper.is-open .nav__title {
+                    height: auto;
+                    opacity: 1;
+                    overflow: visible;
+                    display: block;
                 }
 
                 .nav__counter { font-size: 20px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0;  }
