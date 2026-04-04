@@ -359,7 +359,7 @@
 
                 // Logic: If the top of the section has passed the middle of the screen
                 // OR if the section is currently filling the top part of the screen.
-                if (sectionTop <= scrollPos + 200 && (sectionTop + sectionHeight) > scrollPos + 200) {
+                if (sectionTop <= scrollPos + 50 && (sectionTop + sectionHeight) > scrollPos + 50) {
                     
                     // Only update if it's not already active to save performance
                     var $navItem = $('.nav li a[href="#' + sectionId + '"]').closest('li');
@@ -388,7 +388,7 @@
 
                 $('html, body').stop().animate({
                     scrollTop: $(hash).offset().top
-                }, 800);
+                }, 500);
             }
         });
 
