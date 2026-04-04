@@ -256,7 +256,13 @@
                     text-align: center;
                 }
 
-                .nav__wrapper.is-open .nav__title,
+                .nav__wrapper.is-open .nav__title {
+                    display: block;
+                    height: auto;
+                    opacity: 0.6; /* Dim inactive titles */
+                    overflow: visible;
+                }
+
                 .nav__wrapper.is-open .nav__body {
                     text-align: center;
                     margin-left: auto;
@@ -268,6 +274,19 @@
                     height: auto; 
                     opacity: 1; */
                     display: none; 
+                }
+
+                .nav__wrapper.is-open .nav li.active .nav__title {
+                    display: none;
+                }
+
+                .nav__wrapper.is-open .nav li.active .nav__counter {
+                    display: block; 
+                    height: auto; 
+                    opacity: 1;
+                    font-size: 28px; /* Prominent size for the active selection */
+                    color: #fff;
+                    text-align: center;
                 }
 
                 .nav__wrapper.is-open .nav__title {
