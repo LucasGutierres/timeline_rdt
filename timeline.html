@@ -46,6 +46,11 @@
             align-items: center;
             display: flex;
             flex-direction: column;
+            border-style: solid;
+            border-width: 0px;
+            border-bottom-width: 0px;
+            border-color: #ffffff;
+            padding-bottom: 10vh;
         }
 
         .section img {
@@ -96,13 +101,14 @@
             content: '';
             position: absolute;
             left: -34px;
-            top: 12px; /* Fixed anchor point */
             width: 10px;
             height: 10px;
             background: rgba(255,255,255,0.3);
             border-radius: 50%;
             z-index: 2;
             transition: all 0.3s ease-out;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         /* 2. THE CONTINUOUS LINE */
@@ -178,16 +184,6 @@
             border-style: solid;
         }
 
-        .divider2 {
-            width: 50%;
-            height: 100vh;
-            border-width: 0px;
-            border-color: #ffffff;
-            border-right-width: 0px;
-            border-left-width: 1px;
-            border-style: solid;
-        }
-
         @media (max-width: 768px) {
             body {
                 padding-left: 0;
@@ -213,7 +209,8 @@
                 padding: 0;
                 flex-direction: row;
                 justify-content: center;
-                width: 100%;
+                width: auto;
+                min-width: 100%;
             }
 
             /* 1. Hide all items by default on mobile */
@@ -245,7 +242,6 @@
                 font-size: 24px; /* Adjust size as needed */
                 color: #fff;
                 margin: 0;
-                overflow: visible;
             }
 
             .nav__body {
@@ -258,6 +254,7 @@
                 padding-left: 5%;
                 padding-right: 5%;
             }
+
             .nav-toggle {
                     display: block; /* Show button on mobile */
             }
@@ -295,6 +292,10 @@
                 text-align: center;
             }
 
+            .nav__wrapper.is-open .nav__counter{
+                display: none;
+            }
+
             .nav__wrapper.is-open .nav__title {
                 display: block;
                 height: auto;
@@ -316,11 +317,16 @@
                 display: block; 
                 height: auto; 
                 opacity: 1;
-                font-size: 28px; /* Prominent size for the active selection */
+                font-size: 24px; /* Prominent size for the active selection */
                 color: #fff;
                 text-align: center;
-                padding-left: 10%;
-                padding-right: 10%;
+                padding-left: 5%;
+                padding-right: 5%;
+                width: max-content;
+                margin: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .nav__wrapper.is-open .nav__title {
@@ -328,6 +334,10 @@
                 opacity: 1;
                 overflow: visible;
                 display: block;
+            }
+
+            .nav__wrapper.is-open .nav li:before {
+                display: inline;
             }
 
             .nav__counter { font-size: 20px; height: 0; opacity: 0; overflow: hidden; transition: all 0.3s; margin: 0;  }
