@@ -37,6 +37,7 @@
             background-color: #111111; 
             padding-left: 40%;
             padding-right: 15%;
+            transition: background-color 0.4s ease;
         }
         .wrapper {
             min-height: 100vh;
@@ -78,8 +79,6 @@
             margin-top: 10vh;
             width: 80%;
         }
-
-        .section { background-color: #111111; }
 
         .nav__wrapper {
             position: fixed;
@@ -434,14 +433,14 @@
                 </li>
                 <li>
                     <a href="#section3">
-                        <span class="nav__counter">1807: Camarilla de Além-Mar</span>
-                        <h3 class="nav__title">1807</h3>
+                        <span class="nav__counter">1530: Reinado das Capitanias</span>
+                        <h3 class="nav__title">1530~1820</h3>
                     </a>
                 </li>
                 <li>
                     <a href="#section4">
-                        <span class="nav__counter">1808: Abertura dos Portos</span>
-                        <h3 class="nav__title">1808</h3>
+                        <span class="nav__counter">1807: Camarilla de Além-Mar</span>
+                        <h3 class="nav__title">1807</h3>
                     </a>
                 </li>
                 <li>
@@ -527,33 +526,34 @@
             <img src="images\tordesilhas.png"></section>
         <div class="divider1"></div>
         <section class="section section2" id="section2">
-            <p class="section-subtitle">7 de junho de 1494</p>
-            <p class="section-title">Tratado de Tordesilhas</p>
-            <p>As cortes de Portugal e Espanha decidem dividir a exploração do “novo mundo” através do meridiano definido a 370 léguas da ilha de Cabo Verde. A Oeste pertenceria a Corte Espanhola, a Leste a Corte Portuguesa.</p>
+            <p class="section-subtitle">1530</p>
+            <p class="section-title">Dama de Branco, a primeira</p>
+            <p>A Corte Portuguesa estava repleta de vampiros antigos e poderosos, membros ambiciosos que ansiavam por mais território. E a expansão para as terra de Santa Cruz era a solução perfeita.<br>A Dama de Branco foi a vampira selecionada para expandir a Camarilla, ela veio com seus membros para estruturar uma nova corte nos moldes Europeus. Em 1530, ela forma a primeira vila de São Vicente. 
+            </p>
         </section>
         <div class="divider1"></div>
         <section class="section section3" id="section3">
-            <p class="section-subtitle">7 de junho de 1494</p>
-            <p class="section-title">Tratado de Tordesilhas</p>
-            <p>As cortes de Portugal e Espanha decidem dividir a exploração do “novo mundo” através do meridiano definido a 370 léguas da ilha de Cabo Verde. A Oeste pertenceria a Corte Espanhola, a Leste a Corte Portuguesa.</p>
+            <p class="section-subtitle">1530 até 1820</p>
+            <p class="section-title">Reinado das Capitanias</p>
+            <p>Agora já chamada de Brasil, por causa da abundância do pau Brasil, Pindorama foi dividida em 15 capitanias. Cada capitania foi delegada a um vampiro nobre que mostrou serviço à Camarilla Portuguesa.<br>Foi o maior período de conflito contra os vampiros nativos, ou “Escolhidos da Noite” como se chamavam, muitas capitanias não conseguiram se manter por causa dos conflitos. </p>
         </section>
         <div class="divider1"></div>
         <section class="section section4" id="section4">
-            <p class="section-subtitle">7 de junho de 1494</p>
-            <p class="section-title">Tratado de Tordesilhas</p>
-            <p>As cortes de Portugal e Espanha decidem dividir a exploração do “novo mundo” através do meridiano definido a 370 léguas da ilha de Cabo Verde. A Oeste pertenceria a Corte Espanhola, a Leste a Corte Portuguesa.</p>
+            <p class="section-subtitle">1807</p>
+            <p class="section-title">Chegada da Camarilla de Portugal</p>
+            <p>Junto com a Família Real Portuguesa veio o Príncipe da Camarilla de Portugal com os membros principais de sua corte para o Brasil. Gerando tensão entre os Membros responsáveis pelas Capitanias, pois sua autoridade sobre as terras conquistaram nos últimos séculos seria reduzida. </p>
         </section>
         <div class="divider1"></div>
         <section class="section section5" id="section5">
-            <p class="section-subtitle">7 de junho de 1494</p>
-            <p class="section-title">Tratado de Tordesilhas</p>
-            <p>As cortes de Portugal e Espanha decidem dividir a exploração do “novo mundo” através do meridiano definido a 370 léguas da ilha de Cabo Verde. A Oeste pertenceria a Corte Espanhola, a Leste a Corte Portuguesa.</p>
+            <p class="section-subtitle">1817</p>
+            <p class="section-title">Revolta das Capitanias</p>
+            <p>Dentre os mortais ficou conhecido como Revolta Pernambucana, porém foi o levante das Capitanias contra a Corte Portuguesa, na tentativa de estabelecer a independência de seu Território. Capitania de Pernambuco se destacou em levantar até a população mortal para esta batalha. A Capitania da Bahia e de São Vicente também participaram de levantes em seus territórios.</p>
         </section>
         <div class="divider1"></div>
         <section class="section section6" id="section6">
-            <p class="section-subtitle">7 de junho de 1494</p>
-            <p class="section-title">Tratado de Tordesilhas</p>
-            <p>As cortes de Portugal e Espanha decidem dividir a exploração do “novo mundo” através do meridiano definido a 370 léguas da ilha de Cabo Verde. A Oeste pertenceria a Corte Espanhola, a Leste a Corte Portuguesa.</p>
+            <p class="section-subtitle">1820</p>
+            <p class="section-title">Selamento das Capitanias</p>
+            <p>As Capitanias rebeldes foram totalmente derrotadas e colocadas em Torpor. Pelas as altas contribuições que as Capitanias fizeram a Corte ao longo do tempo, sua punição não foi a morte final, e sim 500 anos de torpor. A localização de seus corpos é um segredo que nem membros de alto status tem acesso.</p>
         </section>
         <div class="divider1"></div>
         <section class="section section7" id="section7">
@@ -657,12 +657,37 @@
             }
             var scrollPos = $(document).scrollTop();
             var vh50 = $(window).height() / 2;
+
+            const colorMap = {
+                'section0': "#111111",
+                'section1': "#111111",
+                'section2': "#111111",
+                'section3': "#7B1818",
+                'section4': "#7B1818",
+                'section5': "#7B1818",
+                'section6': "#7B1818",
+                'section7': "#111111",
+                'section8': "#111111",
+                'section9': "#111111",
+                'section10': "#111111",
+                'section11': "#111111",
+                'section12': "#111111",
+                'section13': "#111111",
+                'section14': "#111111",
+                'section15': "#111111",
+                'section16': "#111111"
+            }
             
             $('section').each(function() {
                 var sectionTop = $(this).offset().top;
                 var triggerPoint = scrollPos + vh50;
 
                 if (sectionTop <= triggerPoint && (sectionTop + $(this).outerHeight()) > triggerPoint) {
+                    var currentClass = Object.keys(colorMap).find(cls => $(this).hasClass(cls));
+                    if (currentClass){
+                        $('body').css("background-color", colorMap[currentClass]);
+                    }
+
                     var $navItem = $('.nav li a[href="#' + $(this).attr("id") + '"]').closest('li');
                     
                     if (!$navItem.hasClass('active')) {
