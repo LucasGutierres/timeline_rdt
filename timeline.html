@@ -39,6 +39,26 @@
             padding-right: 15%;
             transition: background-color 0.4s ease;
         }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("images/artnouveau01pb.jpg");
+            background-size: cover;
+            background-position: center;
+            /* This makes the image sit behind everything */
+            z-index: -1; 
+            /* 'multiply' makes the dark colors of the image blend with the body color */
+            mix-blend-mode: multiply; 
+            /* Adjust opacity if the image is too strong */
+            opacity: 0.8; 
+            pointer-events: none;
+        }
+
         .wrapper {
             min-height: 100vh;
             font-family: 'Roboto Slab', serif;
@@ -452,19 +472,19 @@
                 </li>
                 <li>
                     <a href="#section3">
-                        <span class="nav__counter">1530~1820: Reinado das Capitanias</span>
-                        <h3 class="nav__title">1530~1820</h3>
+                        <span class="nav__counter">1548: Reinado das Capitanias</span>
+                        <h3 class="nav__title">1548</h3>
                     </a>
                 </li>
                 <li>
                     <a href="#section4">
-                        <span class="nav__counter">1807: Camarilla de Além-Mar</span>
+                        <span class="nav__counter">1808: Camarilla de Além-Mar</span>
                         <h3 class="nav__title">1807</h3>
                     </a>
                 </li>
                 <li>
                     <a href="#section5">
-                        <span class="nav__counter">1817: Revolta das Capitanias</span>
+                        <span class="nav__counter">1817: Revolta do Crepúsculo</span>
                         <h3 class="nav__title">1817</h3>
                     </a>
                 </li>
@@ -476,8 +496,8 @@
                 </li>
                 <li>
                     <a href="#section7">
-                        <span class="nav__counter">1821: Conclave de Sangue</span>
-                        <h3 class="nav__title">1821</h3>
+                        <span class="nav__counter">1822: Novos Príncipes</span>
+                        <h3 class="nav__title">1822</h3>
                     </a>
                 </li>
                 <li>
@@ -494,42 +514,54 @@
                 </li>
                 <li>
                     <a href="#section10">
-                        <span class="nav__counter">1889: Início da Era de Prata</span>
+                        <span class="nav__counter">1889: Era de Prata</span>
                         <h3 class="nav__title">1889</h3>
                     </a>
                 </li>
                 <li>
                     <a href="#section11">
+                        <span class="nav__counter">1902: O Projeto Pereira Passos</span>
+                        <h3 class="nav__title">1902</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#section12">
+                        <span class="nav__counter">1930: Anarco-Varguismo</span>
+                        <h3 class="nav__title">1930</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="#section13">
                         <span class="nav__counter">1964: Golpe Militar</span>
                         <h3 class="nav__title">1964</h3>
                     </a>
                 </li>
                 <li>
-                    <a href="#section12">
+                    <a href="#section14">
                         <span class="nav__counter">1969: Período de Trocas</span>
                         <h3 class="nav__title">1969</h3>
                     </a>
                 </li>
                 <li>
-                    <a href="#section13">
+                    <a href="#section15">
                         <span class="nav__counter">1970: O Gringo</span>
                         <h3 class="nav__title">1970</h3>
                     </a>
                 </li>
                 <li>
-                    <a href="#section14">
+                    <a href="#section16">
                         <span class="nav__counter">1985: Golpe Sabá-Anarch</span>
                         <h3 class="nav__title">1985</h3>
                     </a>
                 </li>
                 <li>
-                    <a href="#section15">
+                    <a href="#section17">
                         <span class="nav__counter">1996: O "K"</span>
                         <h3 class="nav__title">1996</h3>
                     </a>
                 </li>
                 <li>
-                    <a href="#section16">
+                    <a href="#section18">
                         <span class="nav__counter">1999: A Kamarilla</span>
                         <h3 class="nav__title">1999</h3>
                     </a>
@@ -546,44 +578,44 @@
         <div class="divider1"></div>
         <section class="section section2" id="section2">
             <p class="section-subtitle">1530</p>
-            <p class="section-title">Dama de Branco, a primeira</p>
-            <p>A Corte Portuguesa estava repleta de vampiros antigos e poderosos, membros ambiciosos que ansiavam por mais território. E a expansão para as terras de Santa Cruz era a solução perfeita.<br>A Dama de Branco foi a vampira selecionada para expandir a Camarilla, ela veio com seus membros para estruturar uma nova corte nos moldes Europeus. Em 1530, ela forma a primeira vila de São Vicente. 
+            <p class="section-title">A Dama de Branco</p>
+            <p>A Corte Portuguesa estava repleta de vampiros antigos e poderosos, membros ambiciosos que ansiavam por mais território. E a expansão para as terras de Santa Cruz era a solução perfeita.<br>A Dama de Branco foi a vampira selecionada para expandir a Camarilla, ela veio com seus membros para estruturar uma nova corte nos moldes Europeus. Em 1530, ela forma a primeira vila, São Vicente. 
             </p>
         </section>
         <div class="divider1"></div>
         <section class="section section3" id="section3">
-            <p class="section-subtitle">1530 até 1820</p>
+            <p class="section-subtitle">1548</p>
             <p class="section-title">Reinado das Capitanias</p>
-            <p>Agora já chamada de Brasil, por causa da abundância do pau Brasil, Pindorama foi dividida em 15 capitanias. Cada capitania foi delegada a um vampiro nobre que mostrou serviço à Camarilla Portuguesa.<br>Foi o maior período de conflito contra os vampiros nativos, ou “Escolhidos da Noite” como se chamavam, muitas capitanias não conseguiram se manter por causa dos conflitos. </p>
+            <p>Agora já chamada de Brasil, por causa da abundância do pau Brasil, Pindorama foi dividida em 15 capitanias. Cada capitania foi delegada a um vampiro nobre que mostrou serviço à Camarilla Portuguesa, essas foram chamadas de Capitanias Crepusculares, as primeiras coteries europeias responsáveis por administrar as terras do Brasil.<br>Foi o maior período de conflito contra os vampiros nativos, ou “Escolhidos da Noite” como se denominavam, muitas capitanias crepusculares não conseguiram se manter por causa dos conflitos.<br>No mundo mortal, o sistema das Capitanias Hereditárias foi oficialmente substituído em 1548, porém, no mundo da noite, as quinze capitanias, perduraram até 1820.  </p>
         </section>
         <div class="divider1"></div>
         <section class="section section4" id="section4">
-            <p class="section-subtitle">1807</p>
-            <p class="section-title">Chegada da Camarilla de Portugal</p>
+            <p class="section-subtitle">1808</p>
+            <p class="section-title">Camarilla de Além-Mar</p>
             <p>Junto com a Família Real Portuguesa veio o Príncipe da Camarilla de Portugal com os membros principais de sua corte para o Brasil. Gerando tensão entre os Membros responsáveis pelas Capitanias, pois sua autoridade sobre as terras conquistaram nos últimos séculos seria reduzida. </p>
         </section>
         <div class="divider1"></div>
         <section class="section section5" id="section5">
             <p class="section-subtitle">1817</p>
-            <p class="section-title">Revolta das Capitanias</p>
-            <p>Dentre os mortais ficou conhecido como Revolta Pernambucana, porém foi o levante das Capitanias contra a Corte Portuguesa, na tentativa de estabelecer a independência de seu Território. Capitania de Pernambuco se destacou em levantar até a população mortal para esta batalha. A Capitania da Bahia e de São Vicente também participaram de levantes em seus territórios.</p>
+            <p class="section-title">Revolta do Crepúsculo</p>
+            <p>Dentre os mortais ficou conhecido como Revolta Pernambucana, porém foi o levante das Capitanias contra a Corte Portuguesa, na tentativa de estabelecer a independência de seu Território. A Capitania de Pernambuco se destacou em levantar até a população mortal para esta batalha. A Capitania da Bahia e de São Vicente também participaram de levantes em seus territórios. </p>
         </section>
         <div class="divider1"></div>
         <section class="section section6" id="section6">
             <p class="section-subtitle">1820</p>
             <p class="section-title">Selamento das Capitanias</p>
-            <p>As Capitanias rebeldes foram totalmente derrotadas e colocadas em Torpor. Pelas as altas contribuições que as Capitanias fizeram a Corte ao longo do tempo, sua punição não foi a morte final, e sim 500 anos de torpor. A localização de seus corpos é um segredo que nem membros de alto status tem acesso.</p>
+            <p>As Capitanias rebeldes foram totalmente derrotadas e colocadas em Torpor. Pelas as altas contribuições que as Capitanias fizeram a Corte ao longo do tempo sua punição não foi a morte final e sim 500 anos de torpor. A localização de seus corpos é um segredo que nem membros de alto status têm acesso.</p>
         </section>
         <div class="divider1"></div>
         <section class="section section7" id="section7">
-            <p class="section-subtitle">1821</p>
+            <p class="section-subtitle">1822</p>
             <p class="section-title">Novos Príncipes</p>
             <p>A Corte Portuguesa está sendo pressionada para retornar a portugal, mas existe a necessidade de uma liderança forte para criar uma Camarilla unificada no Brasil.<br>O Príncipe selecionado é, Manuel Fagundes, ele tenta reinar uma corte descentralizada, desestrutural e desconexa do Ciclo Interno. Entretanto, existe abundância de sangue - existe uma ruptura de ideais entre os Membros e os abraçados.<br>
             </p><p>Manuel viaja e fica quinze anos ausente.<br>De 1822 até 1837 nasce um poder paralelo chamado Conclave de Sangue. Não é considerado uma sociedade Anarch, mas não é bem um principado tradicional. Três membros “reinam” por esse período, divorciados da coroa portuguesa e de sua Camarilla, focados em manter a máscara e administrar respeitosamente o rebanho do Rio de Janeiro.<br>
-            - Uma Malkav, de duas personalidades uma intelectual chamada Ying Yue, e uma persona masculina chamada Wei.<br>
+            - Uma Malkav de duas personalidades: uma intelectual chamada Ying Yue, e uma persona masculina chamada Wei.<br>
             - Tzimisce, Elizandro.<br>
             - Brujah, chamado Frank Brown que muda o nome para Francisco.<br>
-            A trinca se preocupou em cuidar da educação e saúde do mortal Dom Pedro II, nascido em 1825, onde mantinham uma vida vampírica paralela mais rica (embora ainda discreta dos mortais) que em muitos outros países.</p></section>
+            A trinca se preocupou em cuidar da educação e saúde do mortal Dom Pedro II, nascido em 1825, e mantinham uma vida vampírica paralela mais rica (embora ainda discreta dos mortais) que em muitos outros países.</p></section>
         <div class="divider1"></div>
         <section class="section section8" id="section8">
             <p class="section-subtitle">1838</p>
@@ -604,34 +636,46 @@
         </section>
         <div class="divider1"></div>
         <section class="section section11" id="section11">
+            <p class="section-subtitle">1902</p>
+            <p class="section-title">O Projeto Pereira Passos</p>
+            <p>Um dos grandes marcos do governo do João da Prata III foi influenciar nas reformas urbanas de Pereira Passos, trazendo modernização e remodelando o centro da cidade a custo de expulsar as pessoas que ali viviam sem nenhuma forma de suporte.</p>
+        </section>
+        <div class="divider1"></div>
+        <section class="section section12" id="section12">
+            <p class="section-subtitle">1930</p>
+            <p class="section-title">Anarco-Varguismo</p>
+            <p>O movimento Anarch age para deter a influência da Camarilla na política “café-com-leite” que mantém o controle da sociedade mortal. Os Anarchs se unem para apoiar Getúlio Vargas e obrigar a Torre de Marfim a recuar suas influências.<br> Não há mudanças nos Principados da sociedade vampírica.</p>
+        </section>
+        <div class="divider1"></div>
+        <section class="section section13" id="section13">
             <p class="section-subtitle">1964</p>
             <p class="section-title">Golpe dos Castelo Branco</p>
             <p>João da Prata III não satisfaz os membros mais tradicionais da Camarilla. Seu estímulo à arte e entretenimento é bom para manter a humanidade dos membros e tirá-los da mira da Inquisição, mas não agrega poder. Simone Castelo Branco arquiteta um golpe com Ventrues de outras Camarillas Brasileiras e tira do poder João da Prata III.<br> Instauraram uma ditadura no mundo mortal para manter um melhor controle da sociedade.</p>
         </section>
         <div class="divider1"></div>
-        <section class="section section12" id="section12">
+        <section class="section section14" id="section14">
             <p class="section-subtitle">1969</p>
             <p class="section-title">Período de Trocas</p>
             <p>Após o golpe há uma troca constante de príncipes no Rio de Janeiro, mas depois da Era da Prata os membros da Corte não aceitam bem o estilo controlador que os Ventrues tentam impor. </p>
         </section>
         <div class="divider1"></div>
-        <section class="section section13" id="section13">
+        <section class="section section15" id="section15">
             <p class="section-subtitle">1970</p>
             <p class="section-title">O Gringo</p>
             <p>Começa o Reinado do Príncipe Julie Antoine, O Francês, “o príncipe <i>gringo</i>"</p>
         </section>
         <div class="divider1"></div>
-        <section class="section section14" id="section14">
+        <section class="section section16" id="section16">
             <p class="section-subtitle">1985</p>
             <p class="section-title">Golpe Sabá-Anarch</p>
             <p>Queda do Príncipe francês, começa o período de Sabá e Anarquia no Rio de Janeiro</p>
         </section>
-        <section class="section section15" id="section15">
+        <section class="section section17" id="section17">
             <p class="section-subtitle">1996</p>
             <p class="section-title"><a href="https://www.riodastrevas.com/kaua-silva" target="_blank">Kauã</a> ergue a Camarilla</p>
         </section>
         <div class="divider1"></div>
-        <section class="section section16" id="section16">
+        <section class="section section18" id="section18">
             <p class="section-subtitle">1999</p>
             <p class="section-title">A Kamarilla</p>
             <p>É decretado oficialmente o fim de qualquer influência de Sabá no Rio de Janeiro, dando ao Kauã o título de Príncipe do novo Milênio. E recebe as três jóias da Coroa: Uma Harpia, uma Delegada e um Secretário, para o auxílio, recebendo também a visita oficial do Carcará.</p>
@@ -679,23 +723,23 @@
             var vh50 = $(window).height() / 2;
 
             const colorMap = {
-                'section0': "#111111",
-                'section1': "#111111",
-                'section2': "#500012",
-                'section3': "#500012",
-                'section4': "#500012",
-                'section5': "#500012",
-                'section6': "#500012",
-                'section7': "#111111",
-                'section8': "#111111",
-                'section9': "#111111",
-                'section10': "#111111",
-                'section11': "#111111",
-                'section12': "#111111",
-                'section13': "#111111",
-                'section14': "#111111",
-                'section15': "#111111",
-                'section16': "#111111"
+                'section0': "#333333",
+                'section1': "#333333",
+                'section2': "#333333",
+                'section3': "#600012",
+                'section4': "#600012",
+                'section5': "#600012",
+                'section6': "#600012",
+                'section7': "#333333",
+                'section8': "#333333",
+                'section9': "#333333",
+                'section10': "#333333",
+                'section11': "#333333",
+                'section12': "#333333",
+                'section13': "#333333",
+                'section14': "#333333",
+                'section15': "#333333",
+                'section16': "#333333"
             }
             
             $('section').each(function() {
