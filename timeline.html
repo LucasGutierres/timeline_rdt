@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linha do Tempo Rio das Trevas</title>
+
+    <link href="https://googleapis.com" rel="stylesheet">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300&display=swap" rel="stylesheet">
     
@@ -16,6 +18,13 @@
             font-family: Averta;
             src: url("AvertaDemoPE-ExtraBold.otf");
         }
+
+        @font-face{
+            font-family: CenturyGothic;
+            src: url("CenturyGothicPaneuropeanBold.ttf");
+        }
+
+        @import url('https://googleapis.com');
 
         a {
             color: white;
@@ -50,18 +59,15 @@
             background-image: url("images/artnouveau01pb.jpg");
             background-size: cover;
             background-position: center;
-            /* This makes the image sit behind everything */
             z-index: -1; 
-            /* 'multiply' makes the dark colors of the image blend with the body color */
             mix-blend-mode: multiply; 
-            /* Adjust opacity if the image is too strong */
             opacity: 0.8; 
             pointer-events: none;
         }
 
         .wrapper {
             min-height: 100vh;
-            font-family: 'Roboto Slab', serif;
+            font-family: 'Lato', sans-serif;
             font-weight: 300;
             color: #fff;
             width: 100%;
@@ -88,11 +94,13 @@
         .section-title {
             font-size: 40px;
             font-weight: 600;
+            font-family: 'CenturyGothic';
         }
 
         .section-subtitle {
             font-size: 36px;
             font-weight: 450;
+            font-family: 'CenturyGothic';
         }
 
         .section img {
